@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+:root {
+  --bg-base: #080616;
+  --bg-surface: #110d2a;
+  --bg-card: #16113a;
+  --bg-card-hover: #1d1748;
+  --accent: #7c3aed;
+  --accent-light: #a855f7;
+  --accent-glow: rgba(124, 58, 237, 0.35);
+  --text-primary: #f1eeff;
+  --text-secondary: #9d8ec5;
+  --text-muted: #5c5280;
+  --border: rgba(124, 58, 237, 0.2);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --success: #10b981;
+  --platform-instagram: #e1306c;
+  --platform-youtube: #ff0000;
+  --platform-tiktok: #69c9d0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-light);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 3px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+  50% { box-shadow: 0 0 0 6px transparent; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease both;
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.3s ease both;
+}
+
+.card-stagger > * {
+  animation: fadeIn 0.3s ease both;
+}
+.card-stagger > *:nth-child(1) { animation-delay: 0ms; }
+.card-stagger > *:nth-child(2) { animation-delay: 40ms; }
+.card-stagger > *:nth-child(3) { animation-delay: 80ms; }
+.card-stagger > *:nth-child(4) { animation-delay: 120ms; }
+.card-stagger > *:nth-child(5) { animation-delay: 160ms; }
+.card-stagger > *:nth-child(6) { animation-delay: 200ms; }
+.card-stagger > *:nth-child(n+7) { animation-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
